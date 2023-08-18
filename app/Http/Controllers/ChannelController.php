@@ -55,7 +55,10 @@ class ChannelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $channel = Channel::find($id);
+        $channel->fill($request->post())->save();
+
+        return redirect()->route('channel.index')->with('success','Channel Has Been updated successfully');
     }
 
     /**
